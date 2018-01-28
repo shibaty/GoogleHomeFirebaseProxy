@@ -72,6 +72,7 @@ const mainRoutine = () => {
         headers: {
           "Content-Type": "application/json",
           "Accept": "*/*",
+          "User-Agent": "GHFP",
         },
         json: {
           "target": target,
