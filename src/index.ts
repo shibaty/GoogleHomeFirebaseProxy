@@ -13,7 +13,7 @@ const mainRoutine = () => {
   firebase.initializeApp(config.firebase);
 
   const db = firebase.database();
-  const ref = db.ref("electronics");
+  const ref = db.ref("assistant");
 
   const mecab = new MeCab();
 
