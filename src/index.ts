@@ -34,63 +34,57 @@ const mainRoutine = () => {
       }
       console.log("phrase: " + phrase);
 
-      mecab.parseFormat(phrase, (err, results) => {
-        if (err) {
-          console.log("parse phrase error.");
-          return;
-        }
+      const results = mecab.parseSyncFormat(phrase);
 
-        results.map((result) => {
-          if (result.lexical === "名詞") {
-            if (phrase_target === "") {
-              phrase_target = result.original;
-            } else {
-              phrase_action = phrase_action + result.original;
-            }
-          } else if (result.lexical !== "助詞") {
+      results.map((result) => {
+        if (result.lexical === "名詞") {
+          if (phrase_target === "") {
+            phrase_target = result.original;
+          } else {
             phrase_action = phrase_action + result.original;
           }
-        });
-
-        let target: string = "";
-        let action: string = "";
-        if (phrase_target in dict.target) {
-          target = dict.target[phrase_target];
+        } else if (result.lexical !== "助詞") {
+          phrase_action = phrase_action + result.original;
         }
+      });
 
-        if (phrase_action in dict.action) {
-          action = dict.action[phrase_action];
-        }
+      let target: string = "";
+      let action: string = "";
+      if (phrase_target in dict.target) {
+        target = dict.target[phrase_target];
+      }
 
-        if (target === "" || action === "") {
-          console.log("unknown target or action");
-          console.log("phrase target: " + phrase_target
-                      + " phrase action: " + phrase_action);
+      if (phrase_action in dict.action) {
+        action = dict.action[phrase_action];
+      }
+
+      if (target === "" || action === "") {
+        console.log("unknown target or action");
+        console.log("phrase target: " + phrase_target
+                    + " phrase action: " + phrase_action);
+        return;
+      }
+
+      console.log("target: " + target + " action: " + action);
+      const options = {
+        url: config.url,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "*/*",
+        },
+        json: {
+          "target": target,
+          "action": action
+        }        
+      };
+
+      request(options, (error, response, body) => {
+        if (error) {
+          console.log(error);
           return;
         }
-
-        console.log("target: " + target + " action: " + action);
-        const options = {
-          url: config.url,
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-            "User-Agent": "GHFP"
-          },
-          json: {
-            "target": target,
-            "action": action
-          }        
-        };
-
-        request(options, (error, response, body) => {
-          if (error) {
-            console.log(error);
-            return;
-          }
-          console.log(response.statusCode + " " + body);
-        });
+        console.log(response.statusCode + " " + body);
       });
     }
   });
