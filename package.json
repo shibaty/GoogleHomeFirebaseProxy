@@ -1,0 +1,20 @@
+{
+  "name": "googlehome-firebase-dbclient",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "npm run lint && npm run build && node lib/index.js",
+    "lint": "tslint -p tslint.json",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "firebase": "^4.9.0",
+    "mecab-async": "^0.1.2",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "@types/request": "^2.0.13",
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2"
+  },
+  "private": true
+}
