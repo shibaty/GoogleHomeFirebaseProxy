@@ -19,5 +19,7 @@ export const action = {
   "チャンネル逆まわす": "channeldown",
   "チャンネル逆回す": "channeldown",
   "暖房入れる": "heateron",
+  "暖房つける": "heateron",
   "冷房入れる": "acon",
+  "冷房つける": "acon",
 }
