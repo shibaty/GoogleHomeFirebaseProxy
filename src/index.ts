@@ -75,7 +75,8 @@ const mainRoutine = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Accept": "*/*"
+            "Accept": "*/*",
+            "User-Agent": "GHFP"
           },
           json: {
             "target": target,
