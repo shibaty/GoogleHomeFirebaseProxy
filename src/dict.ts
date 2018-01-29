@@ -10,6 +10,7 @@ export const action = {
   "つける": "poweron",
   "入れる": "poweron",
   "消す": "poweroff",
+  "止める": "poweroff",
   "ボリューム上げる": "volumeup",
   "音量上げる": "volumeup",
   "ボリューム下げる": "volumedown",
