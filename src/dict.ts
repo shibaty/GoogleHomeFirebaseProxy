@@ -3,7 +3,7 @@ export const target = {
   "エアコン": "ac",
   "照明": "light",
   "電気": "light",
-  "パパ": "sampleac",
+  "サンプル": "sampleac",
 };
 
 export const action = {
