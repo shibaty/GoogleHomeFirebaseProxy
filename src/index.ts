@@ -8,7 +8,7 @@ import * as dict from "./dict";
 
 // main_rountine
 const mainRoutine = () => {
-  console.log("Google Home Firebase Proxy is Started.");
+  console.info("Google Home Firebase Proxy is Started.");
 
   firebase.initializeApp(config.firebase);
 
@@ -29,7 +29,7 @@ const mainRoutine = () => {
       let phrase_action: string = "";
 
       if (!phrase) {
-        console.log("get phrase error.");
+        console.error("get phrase error.");
         return;
       }
       console.log("phrase: " + phrase);
@@ -59,8 +59,8 @@ const mainRoutine = () => {
       }
 
       if (target === "" || action === "") {
-        console.log("unknown target or action");
-        console.log("phrase target: " + phrase_target
+        console.warn("unknown target or action");
+        console.warn("  phrase target: " + phrase_target
                     + " phrase action: " + phrase_action);
         return;
       }
@@ -82,7 +82,7 @@ const mainRoutine = () => {
 
       request(options, (error, response, body) => {
         if (error) {
-          console.log(error);
+          console.error(error);
           return;
         }
         console.log(response.statusCode + " " + body);
