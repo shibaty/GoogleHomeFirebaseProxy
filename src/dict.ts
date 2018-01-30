@@ -3,12 +3,16 @@ export const target = {
   "エアコン": "ac",
   "照明": "light",
   "電気": "light",
+  "スピーカー": "speaker",
+  "ルンバ": "roomba",
   "サンプル": "sampleac",
 };
 
 export const action = {
   "つける": "poweron",
   "入れる": "poweron",
+  "起動する": "poweron",
+  "動かす": "poweron",
   "消す": "poweroff",
   "止める": "poweroff",
   "ボリューム上げる": "volumeup",
