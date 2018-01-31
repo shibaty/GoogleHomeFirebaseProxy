@@ -40,6 +40,9 @@ const mainRoutine = () => {
         if (result.lexical === "名詞") {
           if (phrase_target === "") {
             phrase_target = result.original;
+            if (phrase_target === "*") {
+              phrase_target = result.kanji;
+            }
           } else {
             phrase_action = phrase_action + result.original;
           }
