@@ -4,7 +4,7 @@ export const target = {
   "照明": "light",
   "電気": "light",
   "スピーカー": "speaker",
-  "ルンバ": "roomba",
+  "Roomba": "roomba",
   "サンプル": "sampleac",
 };
 
@@ -15,6 +15,7 @@ export const action = {
   "動かす": "poweron",
   "消す": "poweroff",
   "止める": "poweroff",
+  "切る": "poweroff",
   "ボリューム上げる": "volumeup",
   "音量上げる": "volumeup",
   "ボリューム下げる": "volumedown",
